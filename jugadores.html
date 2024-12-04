@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lista de jugadores.">
+    <title>Curacas</title>
+    <link rel="stylesheet" href="https://pure-css.github.io/css/pure/pure-min.css">
+    <link rel="stylesheet" href="https://pure-css.github.io/css/pure/grids-responsive-min.css">
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+
+<div class="pure-menu pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading">El logo</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="/index.html" class="pure-menu-link">Inicio</a></li>
+        <li class="pure-menu-item pure-menu-selected"><a ref="#" class="pure-menu-link">Jugadores</a></li>
+        <li class="pure-menu-item pure-menu-selected"><a ref="#" class="pure-menu-link">Padres</a></li>
+        <li class="pure-menu-item pure-menu-selected"><a ref="#" class="pure-menu-link">Entrernadores</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contacto</a></li>
+    </ul>
+</div>
+
+<div class="banner">
+
+</div>
+
+<div class="information">
+        <h3 class="information-head">Nuestros Jugadores</h3>
+            <p class="information">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+            </p>
+</div>
+
+<div class="information">
+    <h3>Buscar Jugador</h3>
+    <input type="text" id="buscarJugador" placeholder="Ingrese Apellido"/>
+</div>
+
+<div class="information">   
+    <table class=".pricing-tables pricing-table">
+        <thead class="pricing-table-header">
+        <tr>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyJugadores" class="pricing-table-price"></tbody>
+    </table>
+
+    <h3><strong>Cantidad de jugadores:</strong><span id="cantidadJugadores">0</span></h3>
+    <h2><strong>Edad Promedio:</strong><span id="edadPromedio">0</span></h2>
+
+    <form id="formCargarJugador">
+        <input type="text" id="DNIJugador" placeholder="Ingrese el DNI" />
+        <input type="text" id="nombreJugador" placeholder="Ingrese el Nombre" />
+        <input type="text" id="apellidoJugador" placeholder="Ingrese el Apellido" />
+        <input type="text" id="edadJugador" placeholder="Ingrese la Edad" />
+        <input type="text" id="sexoJugador" placeholder="Ingrese el Sexo" />
+        <button type="submit">Agregar Jugador</button>
+    </form>
+</div>
+<script src="main.js"></script>
+<div class="footer l-box">
+    <p>
+        Hay que encontrar un lugar para este espacio.
+    </p>
+</div>
+</body>
+</html>
