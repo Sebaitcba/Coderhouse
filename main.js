@@ -5,14 +5,13 @@ class Jugador {
         this.apellido = apellido;
         this.edad = edad;
         this.sexo = sexo;
-        
+
         this.element = this.crearTr();
     }
 
 crearTr() {
     // Crear TR
     const tr = document.createElement("tr");
-
     // Crear TDs
     const tdDNI = document.createElement("td");
     const tdNombre = document.createElement("td");
@@ -23,16 +22,13 @@ crearTr() {
     tdDNI.innerText = `${this.dni}`;
     tdNombre.innerText = `${this.nombre}`;
     tdApellido.innerText = `${this.apellido}`;
-
     const spanEdad = document.createElement("span");
     spanEdad.innerText = `${this.edad}`;
     spanEdad.addEventListener("click", () => {
         clickSpanEdadJugador(tdEdad, spanEdad, this);
     });
-    
     tdEdad.append(spanEdad);
     tdSexo.innerText = `${this.sexo}`;
-
     // TD Acciones
     const botonEliminar = document.createElement("button");
     botonEliminar.innerText = "Eliminar";
@@ -40,10 +36,8 @@ crearTr() {
         eliminarJugador(this);
     });
     tdAcciones.append(botonEliminar);
-
     // Agregar TDs
     tr.append(tdDNI,tdNombre,tdApellido,tdEdad,tdSexo,tdAcciones);
-
     return tr;
     }
 }
@@ -61,7 +55,6 @@ function buscarJugador() {
 
 function guardarEnLS() {
     const jugadoresJSON = JSON.stringify(jugadores);
-
     localStorage.setItem("jugadores", jugadoresJSON);
 }
 
@@ -69,9 +62,7 @@ function transformarJugadoresLocalStorage(jugadoresJSON) {
     if(jugadoresJSON === null) {
         return null;
     }
-
     const jugadores = [];
-
     for(const jugadorLiteral of jugadoresJSON) {
         jugadores.push(
             new Jugador(
@@ -83,7 +74,6 @@ function transformarJugadoresLocalStorage(jugadoresJSON) {
             )
         )
     }
-
     return jugadores;
 }
 
@@ -113,34 +103,29 @@ function dniJugadorExiste(dni) {
 
 function crearJugador(e) {
     e.preventDefault();
-
-    // Obtener inputs
+    //Inputs
     const inputDNIJugador = document.getElementById("DNIJugador");
     const inputNombreJugador = document.getElementById("nombreJugador");
     const inputApellidoJugador = document.getElementById("apellidoJugador");
     const inputEdadJugador = document.getElementById("edadJugador");
     const inputSexoJugador = document.getElementById("sexoJugador");
-
-    // Pedir datos
+    // Datos
     const dniJugador = parseFloat(inputDNIJugador.value);
     const nombreJugador = inputNombreJugador.value;
     const apellidoJugador = inputApellidoJugador.value;
     const edadJugador = parseFloat(inputEdadJugador.value);
     const sexoJugador = inputSexoJugador.value;
-
-    // Limpiar inputs
+    // Limpiar
     inputDNIJugador.value = "";
     inputNombreJugador.value = "";
     inputApellidoJugador.value = "";
     inputEdadJugador.value = "";
     inputSexoJugador.value = "";
-
-    // Chequeamos si el DNI no existe
+    // Chequeamos DNI
     if(dniJugadorExiste(dniJugador)) {
         alert("El DNI del jugador ingresado, ya existe. Ingrese uno diferente");
         return;
     }
-
     // Creamos el Jugador
     const jugador = new Jugador(
         dniJugador,
@@ -149,15 +134,11 @@ function crearJugador(e) {
         edadJugador,
         sexoJugador
     );
-
     // Agregar jugador
     jugadores.push(jugador);
-
     // Guardar en local
     guardarEnLS();
-
     alert("El jugador fue cargado exitosamente");
-
     renderizarTablaJugadores();
 }
 
@@ -189,25 +170,18 @@ function renderizarInformacion() {
 }
 
 function clickSpanEdadJugador(tdEdad, spanEdad, jugador) {
-    // Crear input
-
     spanEdad.className = "ocultar-elemento";
     const inputEdad = document.createElement("input");
     inputEdad.type = "text";
     inputEdad.value = jugador.edad; 
-
     inputEdad.addEventListener("change", () => {
         jugador.edad = parseFloat(inputEdad.value);
         guardarEnLS();
-        //Renderizar la tabla
         renderizarTablaJugadores();
     });
-
-    // Agregar input al td
+    // Agregar input
     tdEdad.append(inputEdad);
 
-    // Ocultar span
-    //spanEdad.className = "ocultar-elemento";
 }
 
 function eliminarJugador(jugador) {
